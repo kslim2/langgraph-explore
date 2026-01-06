@@ -1,7 +1,26 @@
 [project]
-name = "langgraph"
+name = "agentic"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "langgraph>=1.0.5",
+    "pytest>=9.0.2",
+    "python-dotenv>=1.2.1",
+    "transformers",
+]
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu130", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+transformers = { git = "https://github.com/huggingface/transformers.git" }
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
